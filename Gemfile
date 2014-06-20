@@ -12,7 +12,7 @@ gem 'active_model_serializers'
 
 gem 'geocoder'
 
-group :test do
+group :test, :development do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda'
