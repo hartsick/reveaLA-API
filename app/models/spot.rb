@@ -12,7 +12,7 @@ class Spot < ActiveRecord::Base
 	has_many :user_spots
 
 	validates_presence_of :name, :tag, :city, :created_by
-	validates_presence_of :lnglat
+	# validates_presence_of :lnglat
 
 	validates_length_of :state, is: 2
 	validates_numericality_of :zip, only_integer: true, length: { is: 5 }
