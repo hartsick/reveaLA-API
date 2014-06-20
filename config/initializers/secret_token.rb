@@ -16,4 +16,4 @@
 # Using secret_token for rails3 compatibility. Change to secret_key_base
 # to avoid deprecation warning.
 # Can be safely removed in a rails3 api-only application.
-ReveaLAApi::Application.config.secret_token = '9c59bcf3f301ff78055800fbb48decd347030b9fe564535af3e8c5057c061abdf9676a4f8bde2029e9c4974ef63f8e8510dd951210c6fd2dcdd2b04412ef361f'
+ReveaLAApi::Application.config.secret_token = ENV['REVEAL_KEY_BASE']
