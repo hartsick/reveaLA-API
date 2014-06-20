@@ -15,7 +15,7 @@ gem 'geocoder'
 group :test, :development do
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'shoulda'
+  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'json_spec'
 end
