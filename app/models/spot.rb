@@ -1,9 +1,8 @@
 class Spot < ActiveRecord::Base
 	# create spatial point from geocode data
-	geocoded_by :full_street_address do |obj,results|
+	geocoded_by :address do |obj,results|
 	  if geo = results.first
-	  	@lat = geo.latitude
-	  	@lng = geo.longitude
+	  	obj.lnglat = 'POINT(' + geo.longitude.to_s + ' ' + geo.latitude.to_s + ')'
 	  end
 	end
 	after_validation :geocode
@@ -12,13 +11,14 @@ class Spot < ActiveRecord::Base
 	has_many :user_spots
 
 	validates_presence_of :name, :tag, :city, :created_by
-	# validates_presence_of :lnglat
+	validates_presence_of :lnglat, on: :save
+
 
 	validates_length_of :state, is: 2
-	validates_numericality_of :zip, only_integer: true, length: { is: 5 }
+	validates_length_of :zip, is: 5
 	validates_length_of :street, minimum: 5
 
-	def full_street_address
+	def address
 		[street, city, state, zip].compact.join(' ')
 	end
 end
