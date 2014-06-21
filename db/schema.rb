@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620224122) do
+ActiveRecord::Schema.define(version: 20140621005809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
 
   create_table "spots", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "name"
     t.string   "tag"
     t.string   "street"
-    t.string   "state"
-    t.integer  "zip"
-    t.string   "created_by"
-    t.string   "lnglat",     limit: nil
     t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "created_by"
+    t.spatial  "lnglat",     limit: {:srid=>4326, :type=>"point", :geographic=>true}
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_spots", force: true do |t|
