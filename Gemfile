@@ -9,7 +9,7 @@ gem 'spring', :group => :development
 gem 'pg'
 gem 'activerecord-postgis-adapter'
 gem 'active_model_serializers'
-
+gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_email_format_of.git'
 gem 'geocoder'
 
 group :test, :development do
