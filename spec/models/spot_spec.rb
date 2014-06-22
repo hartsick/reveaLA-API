@@ -17,17 +17,22 @@ RSpec.describe Spot, :type => :model do
 		xit { should have_db_column(:country) }
 		it { should have_db_column(:created_by) }
 		it { should have_db_column(:lnglat).of_type(:spatial) }
+		it { should have_db_column(:is_approved).with_options(default: false) }
 	end
 	describe 'validations' do
 		it { should validate_presence_of(:name) }
 		it { should validate_presence_of(:tag) }
 		it { should validate_presence_of(:city) }
 		it { should validate_presence_of(:created_by) }
-		it { should validate_presence_of(:lnglat).on(:save) }
 		xit { should validate_presence_of(:country) }
+		it { should validate_presence_of(:lnglat).on(:save) }
+		it { should validate_presence_of(:is_approved).on(:save) }
 		it { should ensure_length_of(:state).is_equal_to(2) }
 		it { should ensure_length_of(:street).is_at_least(5) }
 		it { should ensure_length_of(:zip).is_equal_to(5) }
+
+		it { should allow_value(true,false).for(:is_approved) }
+		it { should_not allow_value(nil).for(:is_approved) }
 	end
 
 	before(:each) do
