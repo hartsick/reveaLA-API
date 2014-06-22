@@ -24,6 +24,7 @@ class Spot < ActiveRecord::Base
 		[street, city, state, zip].compact.join(' ')
 	end
 
+	# set required permissions for access
 	def can_be_created_by?(current_user)
 		!current_user.nil?
 	end
@@ -33,6 +34,10 @@ class Spot < ActiveRecord::Base
 	end
 
 	def can_be_destroyed_by?(current_user)
+		current_user && current_user.is_admin
+	end	
+
+	def can_be_reviewed_by?(current_user)
 		current_user && current_user.is_admin
 	end
 end

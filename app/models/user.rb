@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 	has_many :user_spots
 	has_many :spots, through: :user_spots
 
+	# set permissions for user
 	def can_create?(resource)
 		resource.can_be_created_by?(self)
 	end
@@ -23,6 +24,10 @@ class User < ActiveRecord::Base
 
 	def can_destroy?(resource)
 		resource.can_be_destroyed_by?(self)
+	end
+
+	def can_review?(resource)
+		resource.can_be_reviewed_by?(self)
 	end
 
 end

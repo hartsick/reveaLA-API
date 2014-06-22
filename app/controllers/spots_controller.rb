@@ -5,13 +5,21 @@ class SpotsController < ApplicationController
 
   respond_to :json
 
+  # show spots approved by administrator
   def index
-    @spots = Spot.all
+    @spots = Spot.where(is_approved: true)
     render json: @spots
   end
 
   def show
     render json: @spot
+  end
+
+  def review
+    raise SecurityTransgression unless current_user.can_review?(@spot)
+
+    @spots = Spot.where(is_approved: false)
+    render json: @spots
   end
 
   def update
