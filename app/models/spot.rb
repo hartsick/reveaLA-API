@@ -1,11 +1,11 @@
 class Spot < ActiveRecord::Base
-	# create spatial point from geocode data
+	# create spatial point from address
 	geocoded_by :address do |obj,results|
 	  if geo = results.first
 	  	obj.lnglat = 'POINT(' + geo.longitude.to_s + ' ' + geo.latitude.to_s + ')'
 	  end
 	end
-	after_validation :geocode
+	before_save :geocode
 
 	has_many :users, through: :user_spots
 	has_many :user_spots
