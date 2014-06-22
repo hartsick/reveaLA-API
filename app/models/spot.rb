@@ -12,7 +12,9 @@ class Spot < ActiveRecord::Base
 
 	validates_presence_of :name, :tag, :city, :created_by
 	validates_presence_of :lnglat, on: :save
+	validates_presence_of :is_approved, on: :save
 
+	validates :is_approved, inclusion: { in: [true, false] }
 
 	validates_length_of :state, is: 2
 	validates_length_of :zip, is: 5

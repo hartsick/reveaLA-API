@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
-
+  include ActionController::StrongParameters
+  include ActionController::MimeResponds
+  include ActionController::ImplicitRender
+  
   before_action :default_json
 
-  def authenticate
+  def authenticate_user
     head :unauthorized and return unless current_user
   end
 

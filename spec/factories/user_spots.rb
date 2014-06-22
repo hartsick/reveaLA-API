@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :user_spot do
-    user nil
-    spot nil
+    user
+    spot
   end
 end
