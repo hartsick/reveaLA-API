@@ -37,6 +37,7 @@ RSpec.describe Spot, :type => :model do
 
 		it { should allow_value(true,false).for(:is_approved) }
 		it { should_not allow_value(nil).for(:is_approved) }
+
 	end
 
 	before(:each) do

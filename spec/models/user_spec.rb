@@ -5,11 +5,11 @@ RSpec.describe User, :type => :model do
 		expect(FactoryGirl.build(:user)).to be_valid
 	end
 
-	it { should validate_presence_of (:username) }
-	it { should validate_presence_of (:name) }
-	it { should validate_presence_of (:email) }
-	it { should validate_presence_of (:password_digest) }
-	it { should validate_presence_of (:is_admin).on(:save) }
+	it { should validate_presence_of(:username) }
+	it { should validate_presence_of(:name) }
+	it { should validate_presence_of(:email) }
+	it { should validate_presence_of(:password_digest) }
+	it { should validate_presence_of(:is_admin).on(:save) }
 	
 	it { should have_secure_password }
 
@@ -53,6 +53,44 @@ RSpec.describe User, :type => :model do
   it "requires an email that is actually an address" do
   	@user = User.new(:email => "bob@bobcom", :password => "oldmeat", :password_confirmation => "oldmeat")
     expect(@user).to be_invalid
+  end
+
+  describe 'permissions' do
+		it { should respond_to(:can_create?) }
+		it { should respond_to(:can_update?) }
+		it { should respond_to(:can_destroy?) }
+
+		describe 'for admin' do
+			before(:each) do
+				@admin = FactoryGirl.build(:user, is_admin: true)
+				@spot = FactoryGirl.create(:spot)
+			end
+			it 'should allow create' do
+				expect(@admin.can_create?(@spot)).to eq(true)
+			end			
+			it 'should not allow update' do
+				expect(@admin.can_update?(@spot)).to eq(true)
+			end			
+			it 'should not allow destroy' do
+				expect(@admin.can_destroy?(@spot)).to eq(true)
+			end
+		end
+
+		describe 'for regular user' do
+			before(:each) do
+				@user = FactoryGirl.create(:user)
+				@spot = FactoryGirl.create(:spot)
+			end
+			it 'should allow create' do
+				expect(@user.can_create?(@spot)).to eq(true)
+			end			
+			it 'should not allow update' do
+				expect(@user.can_update?(@spot)).to eq(false)
+			end			
+			it 'should not allow destroy' do
+				expect(@user.can_destroy?(@spot)).to eq(false)
+			end
+		end
   end
 
 end

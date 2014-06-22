@@ -25,7 +25,7 @@ class Spot < ActiveRecord::Base
 	end
 
 	def can_be_created_by?(current_user)
-		current_user
+		!current_user.nil?
 	end
 
 	def can_be_updated_by?(current_user)
