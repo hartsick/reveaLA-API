@@ -25,7 +25,7 @@ RSpec.describe Spot, :type => :model do
 		it { should validate_presence_of(:city) }
 		it { should validate_presence_of(:created_by) }
 		xit { should validate_presence_of(:country) }
-		it { should validate_presence_of(:lnglat).on(:save) 
+		it { should validate_presence_of(:lnglat).on(:save) }
 		it { should validate_presence_of(:is_approved).on(:save) }
 		it { should ensure_length_of(:state).is_equal_to(2) }
 		it { should ensure_length_of(:street).is_at_least(5) }

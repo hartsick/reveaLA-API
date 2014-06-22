@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 
   get 'spots/show'
 
-  get 'spots/update'
+  put 'spots/update'
 
-  get 'spots/create'
+  post 'spots/create'
 
-  get 'spots/destroy'
+  delete 'spots/destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
