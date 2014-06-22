@@ -1,13 +1,22 @@
 Rails.application.routes.draw do
-  get 'spots/index'
+  get 'spots' => 'spots#index'
+  get 'spots/:id' => 'spots#show'
+  get 'spots/review' => 'spots#review'
+  get 'spots/review/:id/' => 'spots#review_show'
 
-  get 'spots/show'
+  put 'spots/review/:id' => 'spots#update'
+  post 'spots' => 'spots#create'
+  delete 'spots' => 'spots#destroy'
 
-  put 'spots/update'
+  get 'users' => 'users#index'
+  get 'users/:id' => 'users#show'
+  put 'users' => 'users#update'
+  post 'users' => 'users#create'
+  delete 'users' => 'users#destroy'
 
-  post 'spots/create'
+  post 'session' => 'sessions#create'
+  delete 'session' => 'sessions#destroy'
 
-  delete 'spots/destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

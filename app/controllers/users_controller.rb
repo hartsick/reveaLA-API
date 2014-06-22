@@ -3,8 +3,14 @@ class UsersController < ApplicationController
 
   respond_to :json
 
+  # delete or secure me later!
+  def index
+    @users = User.all
+    render json: @users
+  end
+
   def show
-    respond_with current_user
+    render json: @user
   end
 
   def create

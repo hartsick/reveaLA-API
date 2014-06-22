@@ -7,6 +7,8 @@ RSpec.describe SpotsController, :type => :controller do
       get :index
       expect(response).to be_success
     end
+    xit "should only show approved spots" do
+    end
   end
 
   describe "GET 'show'" do

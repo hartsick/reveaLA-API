@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20140622013008) do
-=======
-ActiveRecord::Schema.define(version: 20140621005809) do
->>>>>>> master
+ActiveRecord::Schema.define(version: 20140622204344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+
+  create_table "security_transgressions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "spots", force: true do |t|
     t.string   "name"
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140621005809) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "name"
+    t.boolean  "is_admin",        default: false
   end
 
 end

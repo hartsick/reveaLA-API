@@ -5,8 +5,9 @@ class SpotsController < ApplicationController
 
   respond_to :json
 
+  # show spots approved by administrator
   def index
-    @spots = Spot.all
+    @spots = Spot.where(is_approved: true)
     render json: @spots
   end
 
@@ -14,26 +15,39 @@ class SpotsController < ApplicationController
     render json: @spot
   end
 
-  def update
-    if @spot.update(spot_params)
-      render :nothing, status: 204
-    else
-      render json: @route.errors, status: :unprocessable_entity
-    end
+  def review
+    raise SecurityTransgression unless current_user.can_review?(@spot)
+
+    @spots = Spot.where(is_approved: false)
+    render json: @spots
   end
 
-  def create
-    @spot = Spot.new(spot_params)
-    @spot.created_by = current_user
+  def update
+    raise SecurityTransgression unless current_user.can_update?(@spot)
 
-    if @spot.save
-      render json: @spot, status: :created
+    if @spot.update(spot_params)
+      render :nothing, status: 204
     else
       render json: @spot.errors, status: :unprocessable_entity
     end
   end
 
+  def create
+    spot = Spot.new(spot_params)
+    raise SecurityTransgression unless current_user.can_create?(spot)
+
+    spot.created_by = current_user
+
+    if spot.save
+      render json: spot, status: :created
+    else
+      render json: spot.errors, status: :unprocessable_entity
+    end
+  end
+
   def destroy
+    raise SecurityTransgression unless current_user.can_destroy?(@spot)
+
     @spot.destroy
     render json: :no_content
   end
