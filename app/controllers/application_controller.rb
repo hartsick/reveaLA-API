@@ -1,14 +1,21 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF (cross-site request forgery) attacks by raising an exception.
-  protect_from_forgery with: :exception
-  include ApplicationHelper
 
-  #If you aren't signed in, you're redirected to the login form
-  def authenticate_user
-    if !self.current_user
-    	# Change this!
-      redirect_to root_path
-    end
+  before_action :default_json
+
+  def authenticate
+    head :unauthorized and return unless current_user
+  end
+
+  def current_user
+    @current_user ||= access_token && User.find_by_token(access_token)
+  end
+
+  def access_token
+    @access_token ||= request.authorization && request.authorization.split(' ').last
+  end
+
+  def default_json
+    request.format = :json if params[:format].nil?
   end
 
 end

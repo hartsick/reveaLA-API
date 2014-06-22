@@ -11,14 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20140620231103) do
-=======
 ActiveRecord::Schema.define(version: 20140621005809) do
->>>>>>> 72ae6c325842a6716c778703d23d111514098779
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "spots", force: true do |t|
     t.string   "name"
