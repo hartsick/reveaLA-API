@@ -31,7 +31,7 @@ RSpec.describe Spot, :type => :model do
 	end
 
 	before(:each) do
-		@spot = Spot.create!(street: '7001 Franklin Ave', city: 'Los Angeles', state: 'CA', zip: '90028', name: 'Magic Castle', tag: 'Magical', created_by: 1)
+		@spot = FactoryGirl.create(:spot)
 	end
 
 	describe '#address' do
