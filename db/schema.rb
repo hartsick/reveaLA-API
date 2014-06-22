@@ -11,22 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140620231103) do
+=======
+ActiveRecord::Schema.define(version: 20140621005809) do
+>>>>>>> 72ae6c325842a6716c778703d23d111514098779
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "spots", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "name"
     t.string   "tag"
     t.string   "street"
-    t.string   "state"
-    t.integer  "zip"
-    t.string   "created_by"
-    t.string   "lnglat",     limit: nil
     t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "created_by"
+    t.spatial  "lnglat",     limit: {:srid=>4326, :type=>"point", :geographic=>true}
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_spots", force: true do |t|
