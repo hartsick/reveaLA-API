@@ -23,4 +23,16 @@ class Spot < ActiveRecord::Base
 	def address
 		[street, city, state, zip].compact.join(' ')
 	end
+
+	def can_be_created_by?(current_user)
+		current_user
+	end
+
+	def can_be_updated_by?(current_user)
+		current_user && current_user.is_admin
+	end
+
+	def can_be_destroyed_by?(current_user)
+		current_user && current_user.is_admin
+	end
 end

@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Spot, :type => :model do
+	it 'has a valid factory' do
+		expect(FactoryGirl.build(:spot)).to be_valid
+	end
+	
 	describe 'data model relationships' do
 		it { should have_many(:users).through(:user_spots) }
 		it { should have_many (:user_spots) }

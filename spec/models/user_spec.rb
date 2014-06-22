@@ -4,12 +4,18 @@ RSpec.describe User, :type => :model do
 	it 'has a valid factory' do
 		expect(FactoryGirl.build(:user)).to be_valid
 	end
+
 	it { should validate_presence_of (:username) }
 	it { should validate_presence_of (:name) }
 	it { should validate_presence_of (:email) }
 	it { should validate_presence_of (:password_digest) }
+	it { should validate_presence_of (:is_admin).on(:save) }
 	
 	it { should have_secure_password }
+
+	it { should respond_to(:can_create?) }
+	it { should respond_to(:can_update?) }
+	it { should respond_to(:can_destroy?) }
 
 	it 'username should not be approved if not unique' do
 		unique = FactoryGirl.create(:user, email: 'a@aol.com')
@@ -39,6 +45,7 @@ RSpec.describe User, :type => :model do
 	it { should have_db_column(:name) }
 	it { should have_db_column(:email) }
 	it { should have_db_column(:password_digest) }
+	it { should have_db_column(:is_admin).with_options(default: false) }
 
 	it { should have_many(:spots).through(:user_spots) }
 	it { should have_many(:user_spots) }
