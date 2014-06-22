@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
+	it 'has a valid factory' do
+		expect(FactoryGirl.build(:user)).to be_valid
+	end
 	it { should validate_presence_of (:username) }
 	it { should validate_presence_of (:name) }
 	it { should validate_presence_of (:email) }
@@ -8,13 +11,29 @@ RSpec.describe User, :type => :model do
 	
 	it { should have_secure_password }
 
-	it { should validate_uniqueness_of(:username).case_insensitive }
-	it { should validate_uniqueness_of(:email).case_insensitive }
+	it 'username should not be approved if not unique' do
+		unique = FactoryGirl.create(:user, email: 'a@aol.com')
+		notunique = FactoryGirl.build(:user, email: 'a@aol.com')
+		expect(notunique).to be_invalid
+	end
 
-	it { should ensure_length_of(:password).
-		is_at_least(8).
-		is_at_most(20).
-		with_message(/must be between 8 and 20 characters/) }
+	it 'username should pass if unique' do
+		unique = FactoryGirl.create(:user)
+		notunique = FactoryGirl.build(:user, username: 'revealLAfan' ,email: 'a@aol.com')
+		expect(notunique).to be_valid
+	end
+
+	it 'email should not be approved if not unique' do
+		unique = FactoryGirl.create(:user, username: 'reveaLAfan')
+		notunique = FactoryGirl.build(:user, username: 'reveaLAfan')
+		expect(notunique).to be_invalid
+	end
+
+	it 'email should pass if unique' do
+		unique = FactoryGirl.create(:user)
+		notunique = FactoryGirl.build(:user, username: 'reveaLAfan', email: 'a@aol.com')
+		expect(notunique).to be_valid
+	end
 
 	it { should have_db_column(:username) }
 	it { should have_db_column(:name) }
