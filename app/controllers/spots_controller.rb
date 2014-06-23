@@ -15,6 +15,10 @@ class SpotsController < ApplicationController
     render json: @spot
   end
 
+  def query
+    @closest_spot = LatLonRangeQuery.new(params[:latitude], params[:longitude], 100).results.first
+  end
+
   def review
     raise SecurityTransgression unless current_user.can_review?(@spot)
 
