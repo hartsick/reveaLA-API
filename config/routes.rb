@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post 'spots' => 'spots#create'
   delete 'spots' => 'spots#destroy'
 
+  post 'spots/query' => 'spots#query'
+
   get 'users' => 'users#index'
   get 'users/:id' => 'users#show'
   put 'users' => 'users#update'
