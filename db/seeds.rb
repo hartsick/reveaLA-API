@@ -16,5 +16,15 @@ spots = Spot.create([
 		zip: '90028'
 		created_by: 1,
 		is_approved: true
-	}
+	},	
+	{
+		name: 'Original Muscle Beach',
+		tag: 'fitness',
+		street: '7001 Franklin Ave',
+		city: 'Los Angeles',
+		state: 'CA',
+		zip: '90028'
+		created_by: 1,
+		is_approved: true
+	},
 	])
