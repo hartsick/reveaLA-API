@@ -12,8 +12,7 @@ users = User.create([
 		email: 'test@user.com',
 		password: 'testpassword',
 		password_confirmation: 'testpassword',
-		name: 'Test User',
-		is_admin: false,
+		name: 'Test User'
 	},
 	{
 		username: 'master',
@@ -21,7 +20,7 @@ users = User.create([
 		password: 'masterpassword',
 		password_confirmation: 'masterpassword',
 		name: 'Master User',
-		is_admin: true,
+		is_admin: true
 	}
 	])
 
@@ -32,7 +31,7 @@ spots = Spot.create([
 		street: '7001 Franklin Ave',
 		city: 'Los Angeles',
 		state: 'CA',
-		zip: '90028'
+		zip: '90028',
 		created_by: users.first.id,
 		is_approved: true
 	},	
@@ -42,7 +41,7 @@ spots = Spot.create([
 		street: '7001 Franklin Ave',
 		city: 'Los Angeles',
 		state: 'CA',
-		zip: '90028'
+		zip: '90028',
 		created_by: users.first.id,
 		is_approved: true
 	},
