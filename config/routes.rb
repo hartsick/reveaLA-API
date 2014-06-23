@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  apipie
   get 'spots' => 'spots#index'
   get 'spots/:id' => 'spots#show'
   get 'spots/review' => 'spots#review'
