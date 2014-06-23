@@ -14,7 +14,14 @@ users = User.create([
 		password_confirmation: 'testpassword',
 		name: 'Test User',
 		is_admin: false,
-		user_id: 1
+	},
+	{
+		username: 'master',
+		email: 'master@user.com',
+		password: 'masterpassword',
+		password_confirmation: 'masterpassword',
+		name: 'Master User',
+		is_admin: true,
 	}
 	])
 
@@ -26,7 +33,7 @@ spots = Spot.create([
 		city: 'Los Angeles',
 		state: 'CA',
 		zip: '90028'
-		created_by: 1,
+		created_by: users.first.id,
 		is_approved: true
 	},	
 	{
@@ -36,7 +43,7 @@ spots = Spot.create([
 		city: 'Los Angeles',
 		state: 'CA',
 		zip: '90028'
-		created_by: 1,
+		created_by: users.first.id,
 		is_approved: true
 	},
 	{
@@ -46,7 +53,7 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90405',
-		created_by: 1,
+		created_by: users.first.id,
 		is_approved: true
 	},
 	{
@@ -56,7 +63,7 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90402',
-		created_by: 1,
+		created_by: users.first.id,
 		is_approved: true
 	},
 	{
@@ -66,7 +73,7 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90403',
-		created_by: 1,
+		created_by: users.first.id,
 		is_approved: true
 	},
 	{
@@ -76,7 +83,7 @@ spots = Spot.create([
 		city: 'Los Angeles',
 		state: 'CA',
 		zip: '90026',
-		created_by: 1,
+		created_by: users.first.id,
 		is_approved: true
 	},
 	{
@@ -86,7 +93,7 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90401',
-		created_by: 1,
+		created_by: users[1].id,
 		is_approved: true
 	},
 	{
@@ -96,7 +103,7 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90401',
-		created_by: 1,
+		created_by: users[1].first.id,
 		is_approved: true
 	},
 	{
@@ -106,8 +113,8 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90401',
-		created_by: 1,
-		is_approved: true
+		created_by: users.first.id,
+		is_approved: false
 	},
 	{
 		name: 'The Galley',
@@ -116,8 +123,8 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90405',
-		created_by: 1,
-		is_approved: true
+		created_by: users.first.id,
+		is_approved: false
 	},
 	{
 		name: 'Santa Monica Stairs',
@@ -126,7 +133,7 @@ spots = Spot.create([
 		city: 'Los Angeles',
 		state: 'CA',
 		zip: '90402',
-		created_by: 1,
-		is_approved: true
+		created_by: users[1].id,
+		is_approved: false
 	}
 	])
