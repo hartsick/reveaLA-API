@@ -32,8 +32,12 @@ gem 'rails_12factor'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Deploy with Capistrano
-# gem 'capistrano', :group => :development
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-postgresql', '~> 3.0'
+  gem 'capistrano-rvm'
+end
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
