@@ -16,15 +16,5 @@ spots = Spot.create([
 		zip: '90028'
 		created_by: 1,
 		is_approved: true
-	},	
-	{
-		name: 'Abandoned Lion Cages',
-		tag: 'magical',
-		street: '7001 Franklin Ave',
-		city: 'Los Angeles',
-		state: 'CA',
-		zip: '90028'
-		created_by: 1,
-		is_approved: true
 	}
 	])
