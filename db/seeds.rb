@@ -26,5 +26,5 @@ spots = Spot.create([
 		zip: '90028'
 		created_by: 1,
 		is_approved: true
-	},
+	}
 	])
