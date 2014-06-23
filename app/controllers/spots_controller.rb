@@ -5,20 +5,27 @@ class SpotsController < ApplicationController
 
   respond_to :json
 
+  # GET /spots/
   # show spots approved by administrator
   def index
     @spots = Spot.where(is_approved: true)
     render json: @spots
   end
 
+  # GET /spots/1
+  # show individual spot
   def show
     render json: @spot
   end
 
+  # POST /spots
+  # get closest spot
   def query
     @closest_spot = LatLonRangeQuery.new(params[:latitude], params[:longitude], 100).results.first
   end
 
+  # GET /spots/review
+  # review not yet approved spots
   def review
     raise SecurityTransgression unless current_user.can_review?(@spot)
 
@@ -26,6 +33,8 @@ class SpotsController < ApplicationController
     render json: @spots
   end
 
+  # PATCH /spots/1
+  # spot update or approval
   def update
     raise SecurityTransgression unless current_user.can_update?(@spot)
 
@@ -36,6 +45,8 @@ class SpotsController < ApplicationController
     end
   end
 
+  # POST /spots
+  # spot submission
   def create
     spot = Spot.new(spot_params)
     raise SecurityTransgression unless current_user.can_create?(spot)
@@ -49,6 +60,7 @@ class SpotsController < ApplicationController
     end
   end
 
+  # DELETE /spots/1
   def destroy
     raise SecurityTransgression unless current_user.can_destroy?(@spot)
 
