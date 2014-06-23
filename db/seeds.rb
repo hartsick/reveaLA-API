@@ -6,6 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+users = User.create([
+	{
+		username: 'testuser',
+		email: 'test@user.com',
+		password: 'testpassword',
+		password_confirmation: 'testpassword',
+		name: 'Test User',
+		is_admin: false,
+		user_id: 1
+	}
+	])
+
 spots = Spot.create([
 	{
 		name: 'Magic Castle',
@@ -27,4 +39,94 @@ spots = Spot.create([
 		created_by: 1,
 		is_approved: true
 	},
+	{
+		name: 'The Museum of Flying',
+		tag: 'museum',
+		street: '3100 Airport Ave',
+		city: 'Santa Monica',
+		state: 'CA',
+		zip: '90405',
+		created_by: 1,
+		is_approved: true
+	},
+	{
+		name: 'Annenberg Community Beach House',
+		tag: 'recreation',
+		street: '415 Pacific Hwy',
+		city: 'Santa Monica',
+		state: 'CA',
+		zip: '90402',
+		created_by: 1,
+		is_approved: true
+	},
+	{
+		name: 'Aero Theater',
+		tag: 'movies',
+		street: '1328 Montana Ave',
+		city: 'Santa Monica',
+		state: 'CA',
+		zip: '90403',
+		created_by: 1,
+		is_approved: true
+	},
+	{
+		name: 'Bob Bakers Marionette Theater',
+		tag: 'theater',
+		street: '1345 W 1st St',
+		city: 'Los Angeles',
+		state: 'CA',
+		zip: '90026',
+		created_by: 1,
+		is_approved: true
+	},
+	{
+		name: 'International Chess Park',
+		tag: 'recreation',
+		street: '1647 Ocean Front Walk',
+		city: 'Santa Monica',
+		state: 'CA',
+		zip: '90401',
+		created_by: 1,
+		is_approved: true
+	},
+	{
+		name: 'Santa Monica Looff Hippodrome',
+		tag: 'recreation',
+		street: '200 Santa Monica Pier',
+		city: 'Santa Monica',
+		state: 'CA',
+		zip: '90401',
+		created_by: 1,
+		is_approved: true
+	},
+	{
+		name: 'Camera Obscura',
+		tag: 'recreation',
+		street: '1450 Occean Ave.',
+		city: 'Santa Monica',
+		state: 'CA',
+		zip: '90401',
+		created_by: 1,
+		is_approved: true
+	},
+	{
+		name: 'The Galley',
+		tag: 'food',
+		street: '2442 Main St',
+		city: 'Santa Monica',
+		state: 'CA',
+		zip: '90405',
+		created_by: 1,
+		is_approved: true
+	},
+	{
+		name: 'Santa Monica Stairs',
+		tag: 'fitness',
+		street: '4th St & Adelaide Dr',
+		city: 'Los Angeles',
+		state: 'CA',
+		zip: '90402',
+		created_by: 1,
+		is_approved: true
+	}
 	])
