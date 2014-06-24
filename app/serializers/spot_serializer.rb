@@ -1,3 +1,3 @@
 class SpotSerializer < ActiveModel::Serializer
-  attributes :id, :name, :tag, :address, :lnglat, :created_by, :is_approved
+  attributes :name, :tag, :address, :lnglat, :created_by
 end
