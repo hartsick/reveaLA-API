@@ -22,4 +22,6 @@ class PlaceRangeQuery < RangeQuery
     close_by.and(not_self)
   end
 
+  # add in "not yet found" parameter
+
 end
