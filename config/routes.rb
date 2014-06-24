@@ -1,20 +1,17 @@
 Rails.application.routes.draw do
-  get 'spots' => 'spots#index'
-  get 'spots/:id' => 'spots#show'
+  match 'users', to: 'users#index', via: [:options]
+  match 'users/:id', to: 'users#show', via: [:options]
+
+  match 'spots/:id', to: 'spots#show', via: [:options]
+  match 'spots', to: 'spots#index', via: [:options]
+
+  resources :spots, except: [:upate]
+
   get 'spots/review' => 'spots#review'
   get 'spots/review/:id/' => 'spots#review_show'
 
-  patch 'spots/review/:id' => 'spots#update'
-  post 'spots' => 'spots#create'
-  delete 'spots' => 'spots#destroy'
-
+  # patch 'spots/review/:id' => 'spots#update'
   post 'spots/query' => 'spots#query'
-
-  get 'users' => 'users#index'
-  get 'users/:id' => 'users#show'
-  patch 'users' => 'users#update'
-  post 'users' => 'users#create'
-  delete 'users' => 'users#destroy'
 
   post 'session' => 'sessions#create'
   delete 'session' => 'sessions#destroy'
