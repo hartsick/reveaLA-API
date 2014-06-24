@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
 	# Adds a password confirmation box in the sign up form
   has_secure_password
 
-  validates_presence_of :name, :username, :email, :password_digest
+  validates_presence_of :name, :username, :email
+  validates_presence_of :password_digest, on: :save
   validates_uniqueness_of :email, :username
   validates_email_format_of :email
 
