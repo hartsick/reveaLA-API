@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'spots/review' => 'spots#review'
   get 'spots/review/:id/' => 'spots#review_show'
 
-  put 'spots/review/:id' => 'spots#update'
+  patch 'spots/review/:id' => 'spots#update'
   post 'spots' => 'spots#create'
   delete 'spots' => 'spots#destroy'
 
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'users' => 'users#index'
   get 'users/:id' => 'users#show'
-  put 'users' => 'users#update'
+  patch 'users' => 'users#update'
   post 'users' => 'users#create'
   delete 'users' => 'users#destroy'
 

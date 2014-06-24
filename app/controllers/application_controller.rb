@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
   def default_json
     request.format = :json if params[:format].nil?
   end
-  
+
   def default_serializer_options
     {
       root: false
