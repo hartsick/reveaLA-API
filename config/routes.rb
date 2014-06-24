@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   match 'spots/:id', to: 'spots#show', via: [:options]
   match 'spots', to: 'spots#index', via: [:options]
 
+  resources :users
   resources :spots, except: [:upate]
 
   get 'spots/review' => 'spots#review'
