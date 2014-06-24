@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Allow-Methods'] = 'PATCH, DELETE, POST, GET, OPTIONS'
     headers['Access-Control-Max-Age'] = "1728000"
+    headers['Access-Control-Max-Age'] = "1728000"
+    headers['Access-Control-Request-Method'] = '*'
   end
 
   # If this is a preflight OPTIONS request, then short-circuit the
@@ -26,6 +28,7 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Allow-Methods'] = 'PATCH, DELETE, POST, GET, OPTIONS'
     headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Content-Type'
     headers['Access-Control-Max-Age'] = '1728000'
+    headers['Access-Control-Request-Method'] = '*'
   end
 
   def authenticate_user
