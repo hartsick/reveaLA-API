@@ -12,7 +12,8 @@ users = User.create([
 		email: 'test@user.com',
 		password: 'testpassword',
 		password_confirmation: 'testpassword',
-		name: 'Test User'
+		name: 'Test User',
+		is_admin: false
 	},
 	{
 		username: 'master',
@@ -24,7 +25,7 @@ users = User.create([
 	}
 	])
 
-spots = Spot.create([
+Spot.create([
 	{
 		name: 'Magic Castle',
 		tag: 'magical',
@@ -32,7 +33,7 @@ spots = Spot.create([
 		city: 'Los Angeles',
 		state: 'CA',
 		zip: '90028',
-		created_by: users.first.id,
+		created_by: users.first.id.to_s,
 		is_approved: true
 	},	
 	{
@@ -42,7 +43,7 @@ spots = Spot.create([
 		city: 'Los Angeles',
 		state: 'CA',
 		zip: '90028',
-		created_by: users.first.id,
+		created_by: users.first.id.to_s,
 		is_approved: true
 	},
 	{
@@ -52,7 +53,7 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90405',
-		created_by: users.first.id,
+		created_by: users.first.id.to_s,
 		is_approved: true
 	},
 	{
@@ -62,7 +63,7 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90402',
-		created_by: users.first.id,
+		created_by: users.first.id.to_s,
 		is_approved: true
 	},
 	{
@@ -72,7 +73,7 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90403',
-		created_by: users.first.id,
+		created_by: users.first.id.to_s,
 		is_approved: true
 	},
 	{
@@ -82,7 +83,7 @@ spots = Spot.create([
 		city: 'Los Angeles',
 		state: 'CA',
 		zip: '90026',
-		created_by: users.first.id,
+		created_by: users.first.id.to_s,
 		is_approved: true
 	},
 	{
@@ -92,7 +93,7 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90401',
-		created_by: users[1].id,
+		created_by: users[1].id.to_s,
 		is_approved: true
 	},
 	{
@@ -102,7 +103,7 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90401',
-		created_by: users[1].first.id,
+		created_by: users[1].id.to_s,
 		is_approved: true
 	},
 	{
@@ -112,7 +113,7 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90401',
-		created_by: users.first.id,
+		created_by: users.first.id.to_s,
 		is_approved: false
 	},
 	{
@@ -122,7 +123,7 @@ spots = Spot.create([
 		city: 'Santa Monica',
 		state: 'CA',
 		zip: '90405',
-		created_by: users.first.id,
+		created_by: users.first.id.to_s,
 		is_approved: false
 	},
 	{
@@ -132,7 +133,7 @@ spots = Spot.create([
 		city: 'Los Angeles',
 		state: 'CA',
 		zip: '90402',
-		created_by: users[1].id,
+		created_by: users[1].id.to_s,
 		is_approved: false
 	}
 	])
