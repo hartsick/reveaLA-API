@@ -1,7 +1,5 @@
 # ReveaLA API
 
----
-
 The Rails-based API for ReveaLA, a location-based interactive scavenger hunt for finding hidden and historical spots in Los Angeles.
 
 ##Documentation
@@ -16,8 +14,7 @@ The Rails-based API for ReveaLA, a location-based interactive scavenger hunt for
 
 * **ReveaLA Ionic (for mobile):** [https://github.com/kelseyledford/reveaLA-ionic](https://github.com/kelseyledford/reveaLA-ionic)
 
----
 ##### Created by Christa Hartsock ([@hartsick](http://github.com/hartsick)), Mike Wong ([@mikewong79](http://github.com/mikewong79)) and Kelsey Ledford ([@kelseyledford](http://github.com/kelseyledford))
-**with Ruby on Rails, Rails-API, Capistrano, PostGRESql, PostGIS**
+with Ruby on Rails, Rails-API, Capistrano, PostGRESql, PostGIS
 
-**for General Assembly LA's Web Development Immersive 5/6, Project 4**
+for General Assembly LA's Web Development Immersive 5/6, Project 4
