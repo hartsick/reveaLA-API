@@ -8,7 +8,7 @@ RSpec.describe User, :type => :model do
 	it { should validate_presence_of(:username) }
 	it { should validate_presence_of(:name) }
 	it { should validate_presence_of(:email) }
-	it { should validate_presence_of(:password_digest) }
+	it { should validate_presence_of(:password_digest).on(:save) }
 	it { should validate_presence_of(:is_admin).on(:save) }
 	
 	it { should have_secure_password }
@@ -16,6 +16,7 @@ RSpec.describe User, :type => :model do
 	it { should respond_to(:can_create?) }
 	it { should respond_to(:can_update?) }
 	it { should respond_to(:can_destroy?) }
+	it { should respond_to(:token) }
 
 	it 'username should not be approved if not unique' do
 		unique = FactoryGirl.create(:user, email: 'a@aol.com')
