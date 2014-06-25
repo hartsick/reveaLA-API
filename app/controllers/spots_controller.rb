@@ -24,15 +24,18 @@ class SpotsController < ApplicationController
   # get closest spot to user from their coordinates
   def closest
     if (params[:latitude]&& params[:longitude])
+      puts "hello!"
       closest_spot = LatLonRangeQuery.new(params[:latitude], params[:longitude], 10000000).results.first
       if closest_spot
         render json: closest_spot, status: 204
       else
         render :nothing, status: 404
       end
-    else
+    else      
+      puts "goodbye!"
       render :nothing, status: :unprocessable_entity
     end
+    puts "nah"
   end
 
   # GET /spots/review

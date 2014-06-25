@@ -2,10 +2,10 @@ class SpotSerializer < ActiveModel::Serializer
   attributes :name, :tag, :address, :latitude, :longitude
 
   def latitude
-  	object.lnglat.x
+  	object.lnglat.y
   end
 
   def longitude
-  	object.lnglat.y
+  	object.lnglat.x
   end
 end

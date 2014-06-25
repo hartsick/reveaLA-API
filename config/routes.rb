@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   post 'session' => 'sessions#create'
   delete 'session' => 'sessions#destroy'
 
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
