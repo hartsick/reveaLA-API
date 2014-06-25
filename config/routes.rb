@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  match 'users', to: 'users#index', via: [:options]
-  match 'users/:id', to: 'users#show', via: [:options]
+#  match 'users', to: 'users#index', via: [:options]
+ # match 'users/:id', to: 'users#show', via: [:options]
 
-  match 'spots/:id', to: 'spots#show', via: [:options]
-  match 'spots', to: 'spots#index', via: [:options]
+  #match 'spots/:id', to: 'spots#show', via: [:options]
+  #match 'spots', to: 'spots#index', via: [:options]
 
   resources :users
   resources :spots, except: [:upate]
