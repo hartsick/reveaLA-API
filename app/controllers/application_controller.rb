@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   include ActionController::ImplicitRender
   
   before_action :default_json
-  rescue_from Exception, :with => :rescue_action
 
   def authenticate
     head :unauthorized and return unless current_user
@@ -26,15 +25,6 @@ class ApplicationController < ActionController::Base
     {
       root: false
     }
-  end
-
-  protected
-
-  def rescue_action(e)
-    case e
-    when SecurityTransgression
-      head :forbidden
-    end
   end
 
 end

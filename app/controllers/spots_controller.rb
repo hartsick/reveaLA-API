@@ -1,9 +1,9 @@
 class SpotsController < ApplicationController
   # before_action :authenticate_admin, only: [:create, :update, :destroy  ]
   before_action :authenticate, only: [:create, :update, :destroy]
-  before_action :set_spot, except: :index
+  before_action :set_spot, only: [:show, :update, :review, :destroy]
 
-  wrap_parameters :spot, :include => [:name, :type, :street, :city, :state, :zip, :is_approved, :latitude, :longtiude]
+  wrap_parameters :spot, :include => [:name, :type, :street, :city, :state, :zip, :is_approved, :latitude, :longtiude, :spot_id]
 
   respond_to :json
 
@@ -31,12 +31,13 @@ class SpotsController < ApplicationController
     end
 
     # get closest undiscovered spot to user
-    if (params[:latitude] && params[:longitude])
+    if (params[:latitude] || params[:longitude])
       closest_spot = LatLonRangeQuery.new(params[:latitude], params[:longitude], 10000000).results.first
+
       if closest_spot
-        render json: closest_spot, status: 204
+        render json: closest_spot, status: 200
       else
-        head :not_found
+        render json: closest_spot.errors, status: :unprocessable_entity
       end
     else      
       head :bad_request
