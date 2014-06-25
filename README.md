@@ -8,15 +8,21 @@ The Rails-based API for ReveaLA, a location-based interactive scavenger hunt for
 
 ###Additional components:
 
-* **ReveaLA Angular (for web):** [https://github.com/kelseyledford/reveaLA-angular](https://github.com/kelseyledford/reveaLA-angular)
+* ReveaLA Angular (for web): [https://github.com/kelseyledford/reveaLA-angular](https://github.com/kelseyledford/reveaLA-angular)
 
-* **ReveaLA API**: [https://github.com/hartsick/reveaLA-API](https://github.com/hartsick/reveaLA-API)
+* ReveaLA API: [https://github.com/hartsick/reveaLA-API](https://github.com/hartsick/reveaLA-API)
 
-* **ReveaLA Ionic (for mobile):** [https://github.com/kelseyledford/reveaLA-ionic](https://github.com/kelseyledford/reveaLA-ionic)
+* ReveaLA Ionic (for mobile): [https://github.com/kelseyledford/reveaLA-ionic](https://github.com/kelseyledford/reveaLA-ionic)
 
 ---
 
-###### Created by Christa Hartsock ([@hartsick](http://github.com/hartsick)), Mike Wong ([@mikewong79](http://github.com/mikewong79)) and Kelsey Ledford ([@kelseyledford](http://github.com/kelseyledford))
-with Ruby on Rails, Rails-API, Capistrano, PostGRESql, PostGIS
+###### Created by: 
+* Christa Hartsock ([@hartsick](http://github.com/hartsick))
 
-for General Assembly LA's Web Development Immersive 5/6, Project 4
+* Kelsey Ledford ([@kelseyledford](http://github.com/kelseyledford))
+
+* Mike Wong ([@mikewong79](http://github.com/mikewong79))
+
+with **Ruby on Rails**, **Rails-API**, **Capistrano**, **PostGRESql**, and **PostGIS** 
+
+for **General Assembly** LA's Web Development Immersive 5/6, Project 4
