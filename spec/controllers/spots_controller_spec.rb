@@ -25,8 +25,8 @@ RSpec.describe SpotsController, :type => :controller do
   describe "POST 'create'" do
 
     describe 'logged in user' do
-      let :user do
-        FactoryGirl.build_stubbed(:user)
+      let :current_user do
+        FactoryGirl.build(:user, token: "1234alskdfjasldf")
       end
 
       it "should succeed" do
