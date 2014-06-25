@@ -21,13 +21,14 @@ class SpotsController < ApplicationController
   end
 
   # GET /spots/closest
-  # get closest spot
+  # get closest spot to user from their coordinates
   def closest
     closest_spot = LatLonRangeQuery.new(params[:latitude], params[:longitude], 100).results.first
     if closest_spot
       render json: closest_spot, status: 200
     else
       render :nothing, status: 404
+    end
   end
 
   # GET /spots/review
