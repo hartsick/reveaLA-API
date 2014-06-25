@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'spots/review/:id/' => 'spots#review_show'
 
   # patch 'spots/review/:id' => 'spots#update'
-  post 'spots/query' => 'spots#query'
+  post 'spots/closest' => 'spots#closest'
 
   post 'session' => 'sessions#create'
   delete 'session' => 'sessions#destroy'

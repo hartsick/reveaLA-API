@@ -2,12 +2,12 @@ class SpotsController < ApplicationController
   # before_action :authenticate_admin, only: [:create, :update, :destroy  ]
   before_action :authenticate, only: [:create, :update, :destroy]
   before_action :set_spot, except: :index
-  
+
   wrap_parameters :spot, :include => [:name, :type, :street, :city, :state, :zip, :is_approved]
 
   respond_to :json
 
-  # GET /spots/
+  # GET /spots
   # show spots approved by administrator
   def index
     @spots = Spot.where(is_approved: true)
@@ -20,10 +20,14 @@ class SpotsController < ApplicationController
     render json: @spot
   end
 
-  # POST /spots
+  # GET /spots/closest
   # get closest spot
-  def query
-    @closest_spot = LatLonRangeQuery.new(params[:latitude], params[:longitude], 100).results.first
+  def closest
+    closest_spot = LatLonRangeQuery.new(params[:latitude], params[:longitude], 100).results.first
+    if closest_spot
+      render json: closest_spot, status: 200
+    else
+      render :nothing, status: 404
   end
 
   # GET /spots/review
