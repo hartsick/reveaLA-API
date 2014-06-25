@@ -29,7 +29,7 @@ class RangeQuery
 	end
 
 	def close_by
-		table[location_attribute].st_functoin("ST_DWITHIN", point, max_meters)
+		table[location_attribute].st_function("ST_DWITHIN", point, max_meters)
 	end
 
 	def range_order
