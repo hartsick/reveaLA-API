@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
   # before_action :authenticate_admin, only: [:create, :update, :destroy  ]
-  before_action :authenticate_user, only: [:create, :update, :destroy]
+  before_action :authenticate, only: [:create, :update, :destroy]
   before_action :set_spot, except: :index
 
   respond_to :json

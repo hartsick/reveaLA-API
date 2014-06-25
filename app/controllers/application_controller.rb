@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Max-Age'] = '1728000'
   end
 
-  def authenticate_user
+  def authenticate
     head :unauthorized and return unless current_user
   end
 
