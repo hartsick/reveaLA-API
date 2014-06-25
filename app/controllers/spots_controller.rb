@@ -3,7 +3,7 @@ class SpotsController < ApplicationController
   before_action :authenticate, only: [:create, :update, :destroy]
   before_action :set_spot, except: :index
 
-  wrap_parameters :spot, :include => [:name, :type, :street, :city, :state, :zip, :is_approved]
+  wrap_parameters :spot, :include => [:name, :type, :street, :city, :state, :zip, :is_approved, :latitude, :longtiude]
 
   respond_to :json
 
@@ -20,28 +20,33 @@ class SpotsController < ApplicationController
     render json: @spot
   end
 
-  # POST /spots/closest
-  # get closest spot to user from their coordinates
+  # POST /closest
+  # get closest spot to user from their coordinates, saves spot to user if found
   def closest
-    if (params[:latitude]&& params[:longitude])
-      puts "hello!"
+    # if spot found and user logged in, save to user
+    if (params[:spot_id] && current_user)
+      found_spot = Spot.find(params[:spot_id])
+      current_user.spots << found_spot
+      current_user.save
+    end
+
+    # get closest undiscovered spot to user
+    if (params[:latitude] && params[:longitude])
       closest_spot = LatLonRangeQuery.new(params[:latitude], params[:longitude], 10000000).results.first
       if closest_spot
         render json: closest_spot, status: 204
       else
-        render :nothing, status: 404
+        head :not_found
       end
     else      
-      puts "goodbye!"
-      render :nothing, status: :unprocessable_entity
+      head :bad_request
     end
-    puts "nah"
   end
 
   # GET /spots/review
   # review not yet approved spots
   def review
-    raise SecurityTransgression unless current_user.can_review?(@spot)
+    head :unauthorized unless current_user.can_review?(@spot)
 
     @spots = Spot.where(is_approved: false)
     render json: @spots
@@ -50,7 +55,7 @@ class SpotsController < ApplicationController
   # PATCH /spots/1
   # spot update or approval
   def update
-    raise SecurityTransgression unless current_user.can_update?(@spot)
+    head :unauthorized unless current_user.can_update?(@spot)
 
     if @spot.update(spot_params)
       render :nothing, status: 204
@@ -63,7 +68,8 @@ class SpotsController < ApplicationController
   # spot submission
   def create
     spot = Spot.new(spot_params)
-    raise SecurityTransgression unless current_user.can_create?(spot)
+
+    head :unauthorized unless current_user.can_create?(spot)
 
     spot.created_by = current_user
 
@@ -75,16 +81,18 @@ class SpotsController < ApplicationController
   end
 
   # DELETE /spots/1
+  # spot deletion
   def destroy
-    raise SecurityTransgression unless current_user.can_destroy?(@spot)
+    head :unauthorized unless  current_user.can_destroy?(@spot)
 
     @spot.destroy
     render json: :no_content
   end
 
   protected
+
   def spot_params
-    params.require(:spot).permit(:name,:type,:street,:city,:state,:zip,:is_approved)
+    params.require(:spot).permit(:name, :type, :street, :city, :state, :zip, :is_approved)
   end
 
   def set_spot

@@ -4,15 +4,19 @@ Rails.application.routes.draw do
 
   #match 'spots/:id', to: 'spots#show', via: [:options]
   #match 'spots', to: 'spots#index', via: [:options]
+  match 'closest', to: 'spots#closest', via: [:options]
 
-  resource :user
-  resources :spots, except: [:upate]
+  resource :user, except: [:new, :edit]
+  resources :spots, except: [:new, :edit]
 
   get 'spots/review' => 'spots#review'
   get 'spots/review/:id/' => 'spots#review_show'
 
   # patch 'spots/review/:id' => 'spots#update'
-  post 'spots/closest' => 'spots#closest'
+
+  post 'closest' => 'spots#closest'
+  # curl -i -X POST -H "Content-Type:application/json" -d '{"spot":{"latitude":100, "longitude":30}}' http://localhost:3000/closest/
+
 
   post 'session' => 'sessions#create'
   delete 'session' => 'sessions#destroy'
