@@ -4,14 +4,8 @@ class UsersController < ApplicationController
 
   respond_to :json
 
-  # delete or secure me later!
-  def index
-    @users = User.all
-    render json: @users
-  end
-
   def show
-    render json: @user
+    render json: current_user
   end
 
   def create

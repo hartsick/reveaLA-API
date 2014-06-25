@@ -2,6 +2,8 @@ class SpotsController < ApplicationController
   # before_action :authenticate_admin, only: [:create, :update, :destroy  ]
   before_action :authenticate, only: [:create, :update, :destroy]
   before_action :set_spot, except: :index
+  
+  wrap_parameters :spot, :include => [:name, :type, :street, :city, :state, :zip, :is_approved]
 
   respond_to :json
 
