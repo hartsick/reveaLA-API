@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate, :only => [:show, :update, :destroy]
+  wrap_parameters :user, :include => [:username, :name, :email, :password, :password_confirmation]
 
   respond_to :json
 
