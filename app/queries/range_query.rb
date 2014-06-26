@@ -1,6 +1,6 @@
 class RangeQuery 
 
-	def initialize(model, location_attribute, spot, max_meters)
+	def initialize(model, location_attribute, spot, max_meters, spot_id)
 		# model to query against
 		@model = model
 
@@ -12,9 +12,11 @@ class RangeQuery
 
 		# max range for results
 		@max_meters = max_meters
+
+		@spot_id = spot_id
 	end
 
-	attr_reader :model, :location_attribute, :spot, :max_meters
+	attr_reader :model, :location_attribute, :spot, :max_meters, :spot_id
 
 	def table
 		@table ||= model.arel_table
