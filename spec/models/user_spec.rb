@@ -10,6 +10,7 @@ RSpec.describe User, :type => :model do
 	it { should validate_presence_of(:email) }
 	it { should validate_presence_of(:password_digest).on(:save) }
 	it { should validate_presence_of(:is_admin).on(:save) }
+	it { should validate_presence_of(:is_guest).on(:save) }
 	
 	it { should have_secure_password }
 
@@ -47,6 +48,8 @@ RSpec.describe User, :type => :model do
 	it { should have_db_column(:email) }
 	it { should have_db_column(:password_digest) }
 	it { should have_db_column(:is_admin).with_options(default: false) }
+	it { should have_db_column(:is_guest).with_options(default: true) }
+	it { should have_db_column(:token)}
 
 	it { should have_many(:spots).through(:user_spots) }
 	it { should have_many(:user_spots) }
@@ -77,7 +80,7 @@ RSpec.describe User, :type => :model do
 			end
 		end
 
-		describe 'for regular user' do
+		describe 'for logged in user' do
 			before(:each) do
 				@user = FactoryGirl.create(:user)
 				@spot = FactoryGirl.create(:spot)
@@ -90,6 +93,22 @@ RSpec.describe User, :type => :model do
 			end			
 			it 'should not allow destroy' do
 				expect(@user.can_destroy?(@spot)).to eq(false)
+			end
+		end
+
+		describe 'for guest' do
+			before(:each) do
+				@guest = FactoryGirl.create(:guest)
+				@spot = FactoryGirl.create(:spot)
+			end
+			it 'should allow create' do
+				expect(@guest.can_create?(@spot)).to eq(false)
+			end			
+			it 'should not allow update' do
+				expect(@guest.can_update?(@spot)).to eq(false)
+			end			
+			it 'should not allow destroy' do
+				expect(@guest.can_destroy?(@spot)).to eq(false)
 			end
 		end
   end
