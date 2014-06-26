@@ -6,6 +6,9 @@ The Rails-based API for ReveaLA, a location-based interactive scavenger hunt for
 
 * API Docs: [https://gist.github.com/hartsick/6f03d95e3d0aed17547a](https://gist.github.com/hartsick/6f03d95e3d0aed17547a)
 
+* API Server: [Hosted on Digital Ocean](http://107.170.214.225/)
+
+
 ###Getting Started
 
 * Create database
