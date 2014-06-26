@@ -6,6 +6,21 @@ The Rails-based API for ReveaLA, a location-based interactive scavenger hunt for
 
 * API Docs: [https://gist.github.com/hartsick/6f03d95e3d0aed17547a](https://gist.github.com/hartsick/6f03d95e3d0aed17547a)
 
+###Getting Started
+
+* Create database* 
+	* rake db:creae
+	
+	* Configure PostGIS
+	* [Install Pot http://postgis.net/install/all/)
+
+	* Enable PostGIS in development, testing, and production databases:
+		* in psql: CREATE EXTENSION postgis;
+* Run migrations & seed database
+		* rake db:migrate
+		* rake db:seed
+
+
 ###Additional components:
 
 * ReveaLA Angular (for web): [https://github.com/kelseyledford/reveaLA-angular](https://github.com/kelseyledford/reveaLA-angular)
