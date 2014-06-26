@@ -1,12 +1,14 @@
 class LatLonRangeQuery < RangeQuery
   def initialize(latitude, longitude, max_meters, spot_id)
-    super(Spot, :lnglat, "POINT(#{longitude} #{latitude})", max_meters, spot_id)
+    super(Spot, :lnglat, "POINT(#{longitude} #{latitude})", max_meters)
+
+    @spot_id = spot_id
   end
 
   # selects all places except the place we are
   # querying against
   def not_self
-    table[:id].not_eq(spot_id)
+    table[:id].not_eq(@spot_id)
   end
 
   # only shows approved spots

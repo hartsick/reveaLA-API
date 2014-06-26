@@ -8,11 +8,11 @@ The Rails-based API for ReveaLA, a location-based interactive scavenger hunt for
 
 ###Getting Started
 
-* Create database* 
-	* rake db:creae
+* Create database
+	* rake db:create
 	
-	* Configure PostGIS
-	* [Install Pot http://postgis.net/install/all/)
+* Configure PostGIS
+	* [Install PostGIS](http://postgis.net/install/all/)
 
 	* Enable PostGIS in development, testing, and production databases:
 		* in psql: CREATE EXTENSION postgis;

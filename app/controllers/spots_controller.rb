@@ -31,8 +31,8 @@ class SpotsController < ApplicationController
     end
 
     # get closest undiscovered spot to user
-    if (params[:latitude] || params[:longitude])
-      closest_spot = LatLonRangeQuery.new(params[:latitude], params[:longitude], 10000000).results.first
+    if (params[:latitude] && params[:longitude])
+      closest_spot = LatLonRangeQuery.new(params[:latitude], params[:longitude], 10000000, params[:spot_id]).results.first
       if closest_spot
         render json: closest_spot, status: 200
       else
